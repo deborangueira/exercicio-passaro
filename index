@@ -38,9 +38,8 @@
 
         var passarinho;
 
-        // PRELOAD - carrega as figuras que serão necessárias no jogo
-        // SPRITESHEET - função utilizada para identificar diferentes frames em uma imagem, a fim de gerar uma movimentação. "frameWidth" e "frameHight" delimitam a largura e altura de cada frame, respectivamente.
-        // Observação - o primeiro termo dos parenteses pode ser utilizado durante todo o código para se referir àquela figura
+        // PRELOAD - carrega as imagens do jogo, e o primeiro termo dos parenteses pode ser utilizado durante todo o código para se referir àquela figura
+        // SPRITESHEET - função que identifica os frames no arquivo de imagem. "frameWidth" e "frameHight" delimitam a largura e altura de cada frame, respectivamente.
 
         function preload() {
             this.load.image('bg', 'assets/bg_space.png');
@@ -48,8 +47,8 @@
         }
     
         //CREATE - exibe as figuras na tela
-        //"this.add.image/sprite" - definem a posição, nos eixos x e y, da figura indicada entre os ''
-        //SETSCALE - define o tamanho da figura
+        //"this.add.image/sprite" - definem a posição inicial, nos eixos x e y, da imagem indicada entre os ''
+        //SETSCALE - define o tamanho da imagem
 
         function create() {
             this.add.image(400, 300, 'bg').setScale(1.2);
@@ -57,7 +56,7 @@
     
         // "this.amins.create()" - comando para configurar a animação
         // KEY - define o nome da animação
-        // GenerateFrameNumbers() - Define os frames do spriteSheet que serão utilizados. Em 'bird' são 8 frames,ou seja, começa do 0 e vai até o 7.
+        // GenerateFrameNumbers() - Define os frames que serão utilizados. São 8 frames em 'bird',ou seja, começa do 0 e vai até o 7.
         // FRAMERATE - quão rápido as asas batem
         // REPEAT - quantas vezes essa animação se repete (-1 é repetição contínua, 0 é sem repetição, e # > 0 indica a quantidade de repetições)
 
@@ -69,7 +68,7 @@
 
             });
     
-            // Sem essa linha o passaro não bate as assas, pois esse é o comando que inicia a animação configurada acima.
+            // Sem a linha abaixo o passaro não bate as assas, pois esse é o comando que inicia a animação configurada acima.
             passarinho.anims.play('fly', true);
 
         }
@@ -81,7 +80,7 @@
         function update() { 
 
             // Ponto de partida. 
-            // Lêr-se: quando o passaro está na em x = 100, não inverte-se a imagem e ele deve começar a se mover
+            // Lêr-se: quando o passaro está na em sua posição inicial, não inverte-se a imagem e ele deve ir para frente
 
             if (passarinho.x === 100) {
                 passarinho.setFlip(false,false);
@@ -105,7 +104,7 @@
             }
 
             // Movimento para a esquerda
-            // Lêr-se: enquanto a posição do pássaro não for no ponto de partida e ele estiver executando a volta, a figura deve se deslocar para a esquerda.
+            // Lêr-se: enquanto a posição do pássaro não for o ponto de partida e ele estiver executando a volta, a figura deve se deslocar para a esquerda.
 
             if (passarinho.x > 100 && passarinho.ida === false) {
                 console.log("o passarinho se desloca progressivamente - de 5 em 5 - para a esquerda do eixo x");
