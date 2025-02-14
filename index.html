@@ -87,7 +87,7 @@
                 passarinho.ida = true;
             }
 
-            // Movimento para a direita
+            // Movimento para a direita.
             // Lês-se: sempre que a posição x for menor que 700, o pássaro desloca para a direita mudando sua possição ao adicionar 5 
 
             if (passarinho.x < 700 && passarinho.ida === true) {
@@ -95,7 +95,7 @@
                 passarinho.x +=5;
             }
 
-            // Ponto de retorno
+            // Ponto de retorno.
             // Lêr-se: quando o passaro alcançar o limite no eixo x, a figura espelha horizontalmente e inicia a volta
 
             if (passarinho.x === 700) {
@@ -103,14 +103,31 @@
                 passarinho.ida = false;
             }
 
-            // Movimento para a esquerda
+            // Movimento para a esquerda.
             // Lêr-se: enquanto a posição do pássaro não for o ponto de partida e ele estiver executando a volta, a figura deve se deslocar para a esquerda.
 
             if (passarinho.x > 100 && passarinho.ida === false) {
                 console.log("o passarinho se desloca progressivamente - de 5 em 5 - para a esquerda do eixo x");
                 passarinho.x -= 5;
             }
-            
+           
+        // Loop que verifica a posição do passarinho e ajusta sua coordenada Y.
+        let contador = 0;
+            while (contador < 1) {
+                if (passarinho.descendo) {
+                    passarinho.y -= 2;
+                } else {
+                    passarinho.y += 2;
+                }
+                contador++;
+            }
+        // Controla os limites de movimentação do passarinho na vertical.
+            if (passarinho.y <= 20) {
+                passarinho.descendo = false;
+            } else if (passarinho.y >= 580) {
+                passarinho.descendo = true;
+            }
+
         }
     
     </script>
